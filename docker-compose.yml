@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  shopsurfer_users_db:
+    image: postgres
+    volumes:
+      # - ./sql:/docker-entrypoint-initdb.d
+      - ./data/db:/var/lib/postgresql/data
+    ports:
+      - 5431:5432
+    env_file: .env
+    container_name: shopsurfer_users_db
+
+  shopsurfer_users:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    volumes:
+      - ./app:/app
+    ports:
+      - 8000:8000
+    image: shopsurfer_users:latest
+    container_name: shopsurfer_users
+    command: "python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - shopsurfer_users_db
