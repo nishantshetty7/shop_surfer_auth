@@ -104,7 +104,7 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ALLOW_CREDENTIALS = True
 
-ROOT_URLCONF = 'shop_surfer_users.urls'
+ROOT_URLCONF = 'shop_surfer_auth.urls'
 
 TEMPLATES = [
     {
@@ -122,7 +122,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'shop_surfer_users.wsgi.application'
+WSGI_APPLICATION = 'shop_surfer_auth.wsgi.application'
 
 
 # Database
