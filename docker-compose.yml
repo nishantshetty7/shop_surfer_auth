@@ -10,6 +10,9 @@ services:
     env_file: .env
     container_name: shopsurfer_auth_db
 
+    networks:
+      - my_network
+
   shopsurfer_auth:
     build:
       context: .
@@ -24,3 +27,10 @@ services:
     command: "python manage.py runserver 0.0.0.0:8000"
     depends_on:
       - shopsurfer_auth_db
+
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    external: true
