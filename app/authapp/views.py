@@ -20,6 +20,10 @@ import time
 from django.shortcuts import render
 
 
+@api_view(['GET'])
+def health_check(request):
+    return Response({"Auth Service OK"}, status=status.HTTP_200_OK)
+
 class LoginUserView(TokenObtainPairView):
     serializer_class = AuthTokenSerializer
 
